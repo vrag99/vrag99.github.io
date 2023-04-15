@@ -1,0 +1,125 @@
+$dark: #121212;
+$green: #65e52c;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+.code{
+    font-family: 'Space Mono', monospace;
+    color: $green;
+}
+
+body {
+    background-color: $dark;
+    font-family: 'Inter', monospace;
+    font-weight: 500;
+    letter-spacing: -0.25px;
+    color: white;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $green;
+    }
+    overflow-y: overlay;
+    scrollbar-gutter: stable;
+}
+
+// Navbar
+header{
+    li{list-style: none;}
+    a{
+        text-decoration: none;
+        color: lighten($color: $dark, $amount: 90%);
+        font-size: 1rem;
+    }
+    .logo{
+        color: $green;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: 'Space Mono';
+        margin-right: 1.1rem;
+    }
+    .navbar{
+        display: flex;
+        float: right;
+        li{
+            padding: 0.5rem 1.1rem;
+            margin: 0px 10px;
+            transition: 0.3s;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        li:hover{
+            background-color: lighten($color: $dark, $amount: 10%);
+        }
+    }
+
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.75);
+    backdrop-filter: blur(15px);
+    padding: 0.8rem 12%;
+
+    #menu-icon{
+        color: white;
+    }
+}
+
+// Scrollbar
+body::-webkit-scrollbar{
+    width:10px;
+    overflow: overlay;
+}
+body::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255,0.6);
+
+}
+
+// Welcome section
+main{
+    background: url(https://free4kwallpapers.com/uploads/originals/2018/08/24/dark-forest.-wallpaper_.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+
+    .mask-dark{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.75);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .start{
+        color: white;
+        font-size: 5rem;
+    }
+
+    .caption{
+        font-size: 1.6rem;
+        word-spacing: 0.5rem;
+        text-transform: uppercase;
+        margin-top: 20px;
+    }
+}
