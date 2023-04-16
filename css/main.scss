@@ -1,3 +1,5 @@
+@import 'flipcard.scss';
+
 $dark: #121212;
 $green: #65e52c;
 $card-shadow : rgba(88, 107, 74, 0.25) 0px 25px 50px -12px;
@@ -13,6 +15,8 @@ html{
     text-rendering: optimizeLegibility;
 }
 
+
+// Utility classes
 .code{
     font-family: 'Space Mono', monospace;
     color: $green;
@@ -28,6 +32,29 @@ html{
     font-size: 4rem;
     margin: 2.5rem auto;
     text-align: center;
+    @media screen and (max-width:480px) {
+        font-size: 3rem;;
+    }
+}
+
+.mask-dark{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+}
+
+.vcenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin fixed-bg-cover($url){
+    background: url($url);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 body {
@@ -102,22 +129,9 @@ body::-webkit-scrollbar-thumb{
 
 // Welcome section
 main{
-    background: url(https://free4kwallpapers.com/uploads/originals/2018/08/24/dark-forest.-wallpaper_.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    @include fixed-bg-cover("https://free4kwallpapers.com/uploads/originals/2018/08/24/dark-forest.-wallpaper_.jpg");
     width: 100%;
     height: 100vh;
-
-    .mask-dark{
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.75);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
 
     .title{
         color: white;
@@ -127,145 +141,124 @@ main{
     .caption{
         font-size: 1.6rem;
         word-spacing: 0.5rem;
-        text-transform: uppercase;
         margin-top: 20px;
     }
 }
 
-#project-section{
+section{
     width: 100%;
-    height: 100vh;
+    height: auto;
     margin-top: 3rem;
 }
 
-// Flipcard
-.flex-container{
-    display: flex;
-    justify-content:space-evenly;
-    flex-wrap: wrap;
+#contact-section{
+    @include fixed-bg-cover("https://i.pinimg.com/originals/a9/3a/4d/a93a4d079e9c837879598c665acd2c13.jpg");
+    .title{
+        padding-top: 3rem;
+    }
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 60%;
+        height: auto;
+        background-color: rgb(0,0,0, 0.3);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        padding: 2rem;
 
-}
-.flipcard {
-    padding: 1.25rem;
-    min-width: 25rem;
-    min-height: 18rem;
-    perspective: 600px;
-    margin: 30px 0 30px 0;
-    border-radius: 10px;
-    
-}
+        input, textarea{
+            background: $dark;
+            color: lighten($dark, 60%);
+            padding: 1rem;
+            font-size: 1rem;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            font-weight: 550;
+            margin: 0 10px;
+        }
+        input[type=text], input[type=email]{
+            width: 45%;
+        }
+        textarea{
+            width:100%;
+            margin-top: 2rem;
+        }
 
-.flipcard-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-}
+        .send{
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: 0.5s;
+            &:hover{
+                background-color: $green;
+                transform: translateY(-0.2rem);
+                box-shadow: rgba(113, 113, 206, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.3) 0px 8px 16px -8px;
+            }
+        }
 
-.flipcard-inner:hover {
-    transform: rotateY(-180deg)
-}
-
-.flipcard-frontside {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    background: lighten($dark, 7%);
-    border-radius: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: $card-shadow;
-
-    .project-name{
-        font-family: "Space Mono", monospace;
-        color: $green;
-        font-size: 3rem;
-        font-weight:500;
+        @media only screen and (max-width:900px) {
+            width: 80%;
+        }
+        @media only screen and (max-width:660px) {
+            input[type=text], input[type=email]{
+                width: 100%;
+                margin: 1rem 0;
+            }
+        }
+        @media screen and (max-width:480px) {
+            width:100%;
+        }
     }
 }
 
-.flipcard-backside {
-    position: absolute;
-    backface-visibility: hidden;
-    width: 100%;
-    height: 100%;
-    border-radius: 50px;
-    color: white;
-    overflow-y: auto;
-    background-color: lighten($color: $dark, $amount: 7%);
-    border-radius: 5%;
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    box-shadow: $card-shadow;
-    justify-content: center;
-    align-items: center;
-    
-    padding: 10px;
-
-    .description{
-        color: white;
+.footer{
+    .made-with-love{
         font-size: 1.2rem;
+        padding: 1.5rem 0;
         text-align: center;
-        margin-bottom: 0.2rem;
+    }
+    #heart{
+        animation-name: beat;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    @keyframes beat{
+        from{
+            color: red;
+            transform: scale(1.5);
+        }
+        to{
+            color: $green;
+        }
     }
 
-    a.project-link{
-        font-size: 0.8rem;
+    .social-media-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .social-media-btn{
         text-decoration: none;
-        background: white;
-        font-family: "Inter", sans-serif;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: black;
-        padding: 0.8rem 1rem;
-        border-radius: 2rem;
-        cursor: pointer;
-        transition: all 0.5s;
-        i{
-            margin: 3px 4px;
-        }
+        font-size: 1.2rem;
+        margin: 0.5rem 1.2rem;
+        padding: 1rem 1.5rem;
+        color: white;
+        border-radius: 10px;
+        transition: 0.5s;
+
         &:hover{
-            background-color: $green;
-            transform: translateY(-0.2rem);
-            box-shadow: rgba(113, 113, 206, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.3) 0px 8px 16px -8px;
+            background: $green;
+            color: black;
         }
     }
-}
 
-.flipcard-backside::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #dcb7eb;
-    border-radius: 10px;
-}
-
-.flipcard-backside::-webkit-scrollbar {
-    width: 10px;
-    background-color: #f5f5f5;
-}
-
-.flipcard-backside::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: linear-gradient(#ff00cc, #333399)
-}
-
-.flipcard-backside p {
-    font-weight: 500;
-    padding: 0 20px 20px 20px;
-}
-
-.flipcard-backside h1 {
-    font-family: var(--quicksand);
-    text-transform: uppercase;
-    padding: 0 20px 0 20px;
-}
-
-.flipcard-frontside img {
-    width: 100%;
-    height: 100%;
-    border-radius: 5%;
-    box-shadow: 0px 30px 33px -41px rgba(0, 0, 0, 1) !important;
 }
