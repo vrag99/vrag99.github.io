@@ -151,6 +151,16 @@ section{
     margin-top: 3rem;
 }
 
+.about-me-details{
+    width: 70%;
+    margin: 0 auto;
+    text-align:justify;
+    .bio{
+        font-size: 1.5rem;
+        line-height: 2.1rem;
+    }
+}
+
 #contact-section{
     @include fixed-bg-cover("https://i.pinimg.com/originals/a9/3a/4d/a93a4d079e9c837879598c665acd2c13.jpg");
     .title{
