@@ -86,8 +86,9 @@ header{
         display: flex;
         float: right;
         li{
-            padding: 0.5rem 1.1rem;
-            margin: 0px 10px;
+            display: flex;
+            padding: 0.5rem 1rem;
+            row-gap: 1rem;
             transition: 0.3s;
             border-radius: 10px;
             cursor: pointer;
@@ -106,7 +107,11 @@ header{
     justify-content: space-between;
     background-color: rgba(0,0,0,0.75);
     backdrop-filter: blur(15px);
-    padding: 0.8rem 12%;
+    padding: 0.8rem 3rem;
+
+    @media screen and (max-width:600px){
+        padding: 0.8rem 1.5rem;
+    }
 
     #menu-icon{
         color: white;
